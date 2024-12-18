@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 
 public class User {
-    private String name;
-    private LocalDate dob;
+    protected String name;
+    protected LocalDate dob;
 
     public User() {
         this.name = null;
@@ -12,6 +12,20 @@ public class User {
     public User(String name,int year,int month,int day) {
         this.name = name;
         this.dob = LocalDate.of(year,month,day);
+    }
+
+    public Boolean isBirthday(){
+        if(LocalDate.now().getDayOfMonth() == dob.getDayOfMonth() && LocalDate.now().getMonth() == dob.getMonth()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void displayHappyBirthday() {
+        if(isBirthday())
+            System.out.println("Happy birthday " + this.name + "!");
     }
 
     public String getName(){
